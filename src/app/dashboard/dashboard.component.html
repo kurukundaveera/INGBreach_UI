@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a [routerLink]="['/login']" class="btn btn-link" style="color: white;">Exit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    </div>  
+  </nav>
+  <br>
+  <div class="container">
+      <h5>Breach Requests: </h5>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Breach ID</th>
+          <th scope="col">Risk Type</th>
+          <th scope="col">Franchise</th>
+          <th scope="col">Bussiness Area</th>
+          <th scope="col">Breach State</th>
+          <th scope="col">Reported Date</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ticket of ticketSummary; index as i">
+            <td>
+                {{ ticket.breachId }}
+              </td>
+          <td>
+            {{ ticket.riskType }}
+          </td>
+          <td>{{ ticket.franchise }}</td>
+          <td>{{ ticket.businessArea }}</td>
+          <td>{{ ticket.breachState }}</td>
+          <td>{{ticket.reportedDate}}</td>
+          <td><button type="submit" class="btn btn-primary" (click)="onSubmit(ticket.breachState,ticket.breachId)">Action</button>
+        </tr>
+        </tbody>
+      </table>
+      <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+      <!-- <a [routerLink]="['/accsummary']" class="btn btn-link">Back</a> -->
+    </div>

@@ -1,0 +1,12 @@
+.login-form{
+    border-radius: 0.5em;
+    margin: 0 auto;
+    display: block;
+    background-color: #ccc !important;
+    padding: 2em;
+    
+}
+.ing-logo{
+    /* height: 6em; */
+    margin-left: -10em;
+}

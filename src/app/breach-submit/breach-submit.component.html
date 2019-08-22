@@ -1,0 +1,247 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a [routerLink]="['/login']" class="navbar-brand" style="color: white;">Exit</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+<br>
+<div class="contain container">
+  <div class="row head">
+    <div class="col-md-6 col-sm-12">
+      <h3 style="color: white;text-align: center;">Primary Question</h3>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <h3 style="color: white;text-align: center;">Sub-Primary Question</h3>
+    </div>
+  </div>
+  <form [formGroup]="breachForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group">
+        <h3>Section 1: About you </h3>
+        <h4>1.1 Your Franchise:</h4>
+        <select class="field form-control" formControlName="franchise" (change)="callType($event.target.value)">
+          <option *ngFor="let type of franchiseList" [value]="type.franchiseId">{{type.franchiseName}}</option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group">
+        <h4>1.2 Your Bussiness Area:</h4>
+        <select class="form-control" formControlName="businessArea">
+          <option *ngFor="let type of businessArea">{{type.businessName}}</option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group"></div>
+    </div>
+   <div class="row">
+      <div class="col-md-6 col-sm-12 form-group">
+        <h3>Section 2: How did you find out your breach?</h3>
+        <h4>2. Who identified the breach? </h4>
+        <select class="form-control" formControlName="identbreach">
+          <option *ngFor="let whose of who" [value]="who.value">
+            {{whose.viewValue}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group"></div>
+      <div class="col-md-6 col-sm-12 form-group">
+        <h4>2.2 Is the company a supplier to the bank or another third party? </h4>
+        <select class="form-control" formControlName="bankparty">
+          <option *ngFor="let supply of supplier" [value]="supplier.value">
+            {{supply.viewValue}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group">
+        <h3>Section 3: What has happened and to whom? </h3>
+        <h4>3.3 Have we been made aware of this before? </h4>
+        <select class="form-control" formControlName="aware">
+          <option *ngFor="let awar of aware" [value]="aware.value">
+            {{awar.viewValue}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group">
+        <h4>3.6 Help us to categorise the breach </h4>
+        <select class="field form-control" formControlName="breachCategory">
+          <option *ngFor="let category of categorise" [value]="categorise.value">
+            {{category.viewValue}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group"></div>
+      <div class="col-md-6 col-sm-12 form-group">
+        <h4>3.6 .1 Has the number been faxed to ask them to destroy the information? </h4>
+        <select class="form-control" formControlName="faxed">
+          <option *ngFor="let fax of faxed" [value]="faxed.value">
+            {{fax.viewValue}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group"></div>
+      <div>
+        <h4>3.6.2 Was the information misplaced by a colleague e.g. left on a train? </h4>
+        <select class="form-control" formControlName="colleague">
+          <option *ngFor="let info of colleague" [value]="colleague.value">
+            {{info.viewValue}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group">
+        <h4>3.8 Was the breach caused in your business area?</h4>
+        <select class="form-control" formControlName="businessArea">
+          <option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group"></div>
+      <div class="col-md-6 col-sm-12 form-group">
+        <h4>3.8.1 Which franchise caused the breach? </h4>
+        <select class="form-control">
+          <option *ngFor="let franch of franchise" [value]="franchise.value">
+            {{franch.viewValue}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group"></div>
+      <div class="col-md-6 col-sm-12 form-group">
+        <h4>3.8.2 Which business area caused the breach? </h4>
+        <select class="form-control">
+          <option *ngFor="let area of busarea" [value]="busarea.value">
+            {{area.viewValue}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group"></div>
+      <div class="col-md-6 col-sm-12 form-group">
+        <h4>3.9 If a customer's data, where are the impacted account(s) held? Tick all that apply </h4>
+        <select class="form-control">
+          <option *ngFor="let data of customdata" [value]="customdata.value">
+            {{data.viewValue}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group">
+        <h3>Section 4: About the breach and the information that has been compromised </h3>
+        <h4>4.1 What type of information has been compromised? [Mutually exclusive] </h4>
+        <select class="form-control" (change)="callType($event.target.value)">
+          <option *ngFor="let type of types" [value]="type">{{type}}</option>
+        </select>
+        <div *ngIf="currTab =='credit'">
+          <div class="container row">
+            <div class="col-md-12">
+              <h6>Basic Information:</h6>
+              <table>
+                <tr>
+                  <th>Full Name</th>
+                  <th>Gender</th>
+                </tr>
+                <tr>
+                  <td><input type="text" class="form-control" id="name" placeholder="Name"></td>
+                  <td><input type="tel" class="form-control" id="age" placeholder="Age"></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-12">
+              <h6>Account Information:</h6>
+              <table>
+                <tr>
+                  <th>Provide Bank Account Number</th>
+                  <th>Enter Credit Card Number</th>
+                </tr>
+                <tr>
+                  <td><input type="tel" class="form-control" id="account" placeholder="Account Number"></td>
+                  <td><input type="tel" class="form-control" id="credit" placeholder="Credit Card Number"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="currTab =='debit'">
+          <div class="container row">
+            <div class="col-md-12">
+              <h6>Basic Information:</h6>
+              <table>
+                <tr>
+                  <th>Full Name</th>
+                  <th>Gender</th>
+                </tr>
+                <tr>
+                  <td><input type="text" class="form-control" id="name" placeholder="Name"></td>
+                  <td><input type="tel" class="form-control" id="age" placeholder="Age"></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-12">
+              <h6>Family Details:</h6>
+              <table>
+                <tr>
+                  <th>Marital Status</th>
+                  <th>Dependents</th>
+                  <th>Emergency Contact</th>
+                </tr>
+                <tr>
+                  <td><input type="text" class="form-control" id="marital-status" placeholder="Marital Status"></td>
+                  <td><input type="text" class="form-control" id="age" placeholder="Dependents"></td>
+                  <td><input type="tel" class="form-control" id="age" placeholder="Emergency Contact"></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-12">
+
+
+            </div>
+          </div>
+        </div>
+        <div *ngIf="currTab =='others'">
+          <h6>No Further Information Required..</h6>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 form-group">
+        <h3>Section 5: Risk Profile (To be auto-calculated) </h3>
+        <h4>What is the risk profile? </h4>
+        <select class="form-control" (change)="callType($event.target.value)">
+          <option *ngFor="let type of types" [value]="type">{{type}}</option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-12 form-group"></div>
+    </div> 
+
+    <div class="row submit-btn form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+  </form>
+</div>
